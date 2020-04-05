@@ -8,16 +8,7 @@ import TVScreen from "../screens/TV";
 import SearchScreen from "../screens/Search";
 import { BG_COLOR } from "../constants/Color";
 import TabBarIcon from "../componenets/TabBarIcon";
-
-const createStack = (screen, title) =>
-    createStackNavigator({
-        Screen: {
-            screen,
-            navigationOptions: {
-                title
-            }
-        }
-    })
+import { createStack } from "./config";
 
 
 const TabNavigation = createBottomTabNavigator({
@@ -44,12 +35,7 @@ const TabNavigation = createBottomTabNavigator({
         }
     },
     Search: { 
-        screen: createStackNavigator({ 
-            Search: {
-                screen: SearchScreen,
-                navigationOptions: { title: "Search" }
-            } 
-        }),
+        screen: createStack(SearchScreen, "Search"),
         navigationOptions: {
             tabBarIcon: ({ focused }) => (
                 <TabBarIcon 
